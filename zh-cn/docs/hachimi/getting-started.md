@@ -42,6 +42,6 @@
 
 安装过程根据游戏版本而有所不同。请点击其中一个进行查看。
 
-#### [日服](zh-cn/docs/hachimi/getting-started-jp.html)
+#### [日服](getting-started-jp.html)
 
-#### [国际服 / 繁体中文服 / 简体中文服](zh-cn/docs/hachimi/getting-started-other.html)
+#### [国际服 / 繁体中文服 / 简体中文服](getting-started-other.html)

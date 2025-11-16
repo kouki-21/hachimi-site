@@ -46,6 +46,6 @@ Existing Hachimi user? You will need to change to Hachimi Edge due to a big game
 ❌ - Not supported.<br>
 </small>
 
-## [Installation guide for JP](/docs/hachimi/getting-started-jp.html)
+## [Installation guide for JP](getting-started-jp.md)
 
-## [Installation guide for Global / TW / CN](/docs/hachimi/getting-started-other.html)
+## [Installation guide for Global / TW / CN](getting-started-other.md)
