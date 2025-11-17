@@ -139,6 +139,17 @@ See [Error 501](#error-501) above.
 ### I/O error: Access is denied (os error 5)
 Something is using files you're trying to modify. Likely means you still have the game open while trying to(un)install Hachimi.
 
+### Installer I/O error: The system cannot find the file specified (os error 2)
+This is likely to occur on global due to some file name differences not yet accounted for. It shouldn't affect Hachimi and can be safely ignored.
+
+### First time setup: Repo selection stuck loading or shows an error
+This probably means you're using a VPN to access the game itself. Temporarily turn it off until the setup is over and translations are downloaded.  
+See also the [related issue below](#not-receiving-translation-updates). 
+
+### Not receiving translation updates
+First of all, there might not be updates. This should be indicated by a "No updates found" message.
+If this message doesn't show, you're probably using a VPN to access the game. Turn it off during the update phase.
+
 
 ## Android
 
