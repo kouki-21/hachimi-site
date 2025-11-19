@@ -15,13 +15,21 @@ Change the "Physics update mode" setting to "Mode60FPS". This setting is availab
 
 ### Corrupted/jumbled textures or text 
 
-If you are playing the **Global** version and accidentally installed translations **not specicially made for Global**, you will see corrupted text and images.  
-To fix this, open the Hachimi overlay with the `Right Arrow` key, go to the `Config Editor` and enable `Disable translations`, then restart the game.
+::: tip
+If you are playing the **Global** version, you might have accidentally installed translations **not specicially made for Global**.
+To fix this, open the Hachimi menu, run the `First time setup` again to choose a compatible source or none, then restart the game.
+:::
 
-If you are playing the **JP** version, update your translations from the menu and restart the game.
-Your translation source might also be out of date, especially afer a game update. Just wait for an update in that case.  
-If this doesn't help, you might still be using an old source from the original Hachimi. Open the Menu and run the `First Time Setup` again.  
-<small>If it's close to a game update, it's likely source maintainers will be working on it. Please check if they're already aware before bothering them.</small>  
+This happens because there is a mismatch between the game's sprite textures and the translated ones. The most likely reason is the game simply updated and changed some sprites, usually affecting the `atlas` type.
+
+1. Try to update your translations from the menu. If an update was found, restart the game after it finishes.
+    - On Android/some devices, you *might* also need to delete the `atlas` folder to let it update correctly.
+1. If no update was found, your translation source is out of date. Just wait for an update, or check in with the source.
+    - <small>If it's close to a game update, source maintainers will likely be working on it. Please check if they're already aware before bothering them.</small>
+
+Your translation source might also be inactive. This could indicate you're still using an old source from the original Hachimi.
+Make sure you're using Hachimi Edge, then open its menu and go through the `First time setup` again.  
+If no active source for your language exists, you can check `Menu` -> `Config Editor` -> `Disable translations` if needed.
 
 ### Something isn't translated
 Translations are provided by volunteers in the community offering up their time. Many things are not yet done. Check in with your chosen translation source and try to support its translators.
@@ -40,6 +48,11 @@ This means you are banned.
 ### The in-game background is shrunk / White border
 Open Hachimi Menu -> Config Editor and reset `virtual resolution multiplier` to 1. 
 If that doen't help, try adjusting it until it looks ok.
+
+### My issue isn't listed on this page
+Uninstall Hachmimi using the installer. Try to use the one you installed your current version with, but the latest one should work just fine.
+If you have multiple game versions installed, make sure you uninstall from the right path. Then reinstall latest Hachimi Edge.
+If that doesn't work, you can ask in the `#help` channel on the [Hachimi Discord](https://discord.gg/BVEt5FcxEn) and clearly explain your issue and what you have tried.
 
 
 ## Windows
