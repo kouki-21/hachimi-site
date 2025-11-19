@@ -59,7 +59,7 @@ If you already have save data from playing, make sure you have set up a Data Lin
 :::
 
 ::: danger
-If you have already installed the game, you must uninstall it first. The patched game can later be updated without uninstalling.
+If you have the *unpatched* game installed, you must uninstall it first. The patched game can later be updated without uninstalling.
 :::
 
 ::: warning
@@ -71,8 +71,8 @@ The recommended source is [Qoopy](https://qoopy.leadrdrk.com/), use ID 6172.
 On Xiaomi devices without HyperOS, try disabling MIUI Optimizations before installing.
 :::
 
-1. If you used Umapatcher before, open its settings page and **export the signing key somewhere safe**.
-1. Uninstall the original game if you have not patched it before.
+1. If you used UmaPatcher before, open its settings page and **export the signing key somewhere safe**.
+1. Uninstall the original game **if you have not patched it before using either UmaPatcher version**.
 1. Download and install the latest version of [UmaPatcher Edge](https://github.com/kairusds/UmaPatcher-Edge/releases/latest/download/app-release.apk).
 1. Prepare an installation package for the game, which can be:
     - **Split APK files:** A base APK file and one of the split config APKs (config.arm64_v8a, config.armeabi-v7a, etc.),
