@@ -50,7 +50,7 @@
 - `shadow_resolution`: 影のクオリティを調整します。高い値に設定すると、影のディテールは向上しますが、パフォーマンスが低下する可能性があります。
 - `skill_info_dialog`: ゲーム内でスキルを表示する際に、スキルに関する詳細情報を表示します。
 
-### Windows のみ
+## Windows のみ
 
 - `vsync_count`: VSync カウントを設定します。1 に設定すると、ゲームの FPS がモニターのリフレッシュレートに同期されます。詳しくは[こちら（Unity docs）](https://docs.unity3d.com/ScriptReference/QualitySettings-vSyncCount.html)
 - `load_libraries`: 起動時に読み込むライブラリのリストを設定します。他のMODの読み込みにも使用できます。 例： `["applejuicer.dll", "banana.dll"]`
