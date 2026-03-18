@@ -31,7 +31,7 @@
 - `disable_skill_name_translation`: 他の部分の翻訳を有効にしたまま、スキル名の翻訳のみを無効にします。
 - `meta_index_url`: 利用可能なリポジトリを取得するために使用されるメタインデックス URL を設定します。
 - `ui_scale`: UIサイズの倍率を設定します。デフォルトの値：`1.0` （変更なし）
-- `hide_ingame_ui_hotkey`: ゲームの UI を非表示にする内部ホットキーを有効にします。Android でこれを有効にした場合、`右上を3回タップ`することでも同様に動作します。
+- `hide_ingame_ui_hotkey`: ゲームの UI を非表示にする内部ホットキーを有効にします。Android でこれを有効にした場合、`画面右上を3回タップ`することでも同様に動作します。
 - `graphics_quality`: グラフィックのクオリティを設定します。設定可能な値： `Default`、`Toon1280`、`Toon1280x2`、`Toon1280x4`、`ToonFull`、`Max`
 - `story_choice_auto_select_delay`: ストーリー閲覧時に AUTO を使用している際の、選択肢を選択するまでの遅延（秒）を設定します。デフォルトの値: `0.75`（秒）
 - `story_tcps_multiplier`: ストーリー閲覧時のテキストのスピードの倍数（"typewriting count per second"）を設定します。 デフォルトの値： `1.0`
