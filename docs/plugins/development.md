@@ -182,6 +182,12 @@ unsafe fn resolve_il2cpp_symbol(name: &str) -> *mut c_void {
     (vtable.il2cpp_resolve_symbol)(name_cstr.as_ptr())
 }
 
+unsafe fn resolve_il2cpp_icall(name: &str) -> *mut c_void {
+    let vtable = VTABLE.unwrap();
+    let name_cstr = CString::new(name).unwrap();
+    (vtable.il2cpp_resolve_icall)(name_cstr.as_ptr())
+}
+
 unsafe fn get_assembly_image(name: &str) -> *const c_void {
     let vtable = VTABLE.unwrap();
     let name_cstr = CString::new(name).unwrap();
@@ -209,6 +215,21 @@ unsafe fn get_method(
     (vtable.il2cpp_get_method)(klass, method_cstr.as_ptr(), arg_count)
 }
 
+unsafe fn get_methods(klass: *mut c_void) -> impl Iterator<Item = *const c_void> {
+    let mut iter: *mut c_void = std::ptr::null_mut();
+    
+    std::iter::from_fn(move || {
+        let vtable = VTABLE.unwrap();
+        let method = (vtable.il2cpp_class_get_methods)(klass, &mut iter);
+        
+        if method.is_null() {
+            None
+        } else {
+            Some(method)
+        }
+    })
+}
+
 unsafe fn get_method_addr(
     klass: *mut c_void,
     method_name: &str,
@@ -217,6 +238,11 @@ unsafe fn get_method_addr(
     let vtable = VTABLE.unwrap();
     let method_cstr = CString::new(method_name).unwrap();
     (vtable.il2cpp_get_method_addr)(klass, method_cstr.as_ptr(), arg_count)
+}
+
+unsafe fn object_new(klass: *const c_void) -> *mut c_void {
+    let vtable = VTABLE.unwrap();
+    (vtable.il2cpp_object_new)(klass)
 }
 
 unsafe fn get_field(klass: *mut c_void, field_name: &str) -> *mut c_void {
@@ -654,6 +680,10 @@ pub struct Vtable {
     ) -> *mut c_void,
     pub il2cpp_find_nested_class:
         unsafe extern "C" fn(class: *mut c_void, name: *const c_char) -> *mut c_void,
+    pub il2cpp_resolve_icall:
+        unsafe extern "C" fn(name: *const c_char) -> *mut c_void,
+    pub il2cpp_class_get_methods:
+        unsafe extern "C" fn(klass: *mut c_void, iter: *mut *mut c_void) -> *const c_void,
     pub il2cpp_get_field_from_name:
         unsafe extern "C" fn(class: *mut c_void, name: *const c_char) -> *mut c_void,
     pub il2cpp_get_field_value: unsafe extern "C" fn(
@@ -670,6 +700,7 @@ pub struct Vtable {
         unsafe extern "C" fn(field: *mut c_void, out_value: *mut c_void),
     pub il2cpp_set_static_field_value:
         unsafe extern "C" fn(field: *mut c_void, value: *const c_void),
+    pub il2cpp_object_new: unsafe extern "C" fn(klass: *const c_void) -> *mut c_void,
     pub il2cpp_unbox: unsafe extern "C" fn(obj: *mut c_void) -> *mut c_void,
     pub il2cpp_get_main_thread: unsafe extern "C" fn() -> *mut c_void,
     pub il2cpp_get_attached_threads:
@@ -875,11 +906,11 @@ unsafe {
 unsafe fn example_il2cpp_usage() {
     if let Some(vtable) = VTABLE {
         // Get a class
-    let image_name = CString::new("UnityEngine.CoreModule").unwrap();
+        let image_name = CString::new("UnityEngine.CoreModule").unwrap();
         let image = (vtable.il2cpp_get_assembly_image)(image_name.as_ptr());
 
-    let namespace = CString::new("UnityEngine").unwrap();
-    let class_name = CString::new("Object").unwrap();
+        let namespace = CString::new("UnityEngine").unwrap();
+        let class_name = CString::new("Object").unwrap();
         let klass = (vtable.il2cpp_get_class)(image, namespace.as_ptr(), class_name.as_ptr());
 
         if klass.is_null() {
@@ -892,11 +923,21 @@ unsafe fn example_il2cpp_usage() {
             return;
         }
 
+        // Example: instantiate a new object
+        let new_obj = object_new(klass);
+
         // Example: resolve a method address
-    let method_name = CString::new("get_name").unwrap();
-    let method_addr = (vtable.il2cpp_get_method_addr)(klass, method_name.as_ptr(), 0);
+        let method_name = CString::new("get_name").unwrap();
+        let method_addr = (vtable.il2cpp_get_method_addr)(klass, method_name.as_ptr(), 0);
         if method_addr.is_null() {
             return;
+        }
+
+        // Example: find a specific method overload by index
+        // This is useful when multiple methods have the same name
+        if let Some(method_info) = get_methods(klass).nth(2) {
+            // The first field of MethodInfo is the actual function pointer
+            let specific_addr = *(method_info as *const *mut c_void);
         }
 
         // Cast method_addr to a function pointer if you intend to call it

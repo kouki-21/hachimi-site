@@ -4,15 +4,16 @@ UmaTL is actually the first translation patch for the game. It included editing 
 
 ## Installation
 
-1. Install [python 3.13 (64bit)](https://www.python.org/downloads/)
-1. Install [git](https://git-scm.com/)
+1. Install **Python 3.13 (64bit)** through the [install manager](https://www.python.org/downloads/) or [direct link](https://www.python.org/ftp/python/3.13.12/python-3.13.12-amd64.exe).
+1. Install [git](https://git-scm.com/).
 1. Create a folder in which you want umatl to be (`D:\uma-tools\umatl` or something). This is the `UmaTL Folder`.
 1. Extract the content of [wheels.zip from releases](https://github.com/UmaTL/hachimi-tl-en/releases/tag/support) into the `UmaTL Folder\wheels` folder.
-1. Open a cmdline in the base `UmaTL Folder` folder and run:
+1. Open a cmdline (you can type `cmd` in the address bar) in the base `UmaTL Folder` folder and run:
    ``` bat
    git clone https://github.com/noccu/umamusu-translate.git .
-   py -m venv .venv
+   py -3.13 -m venv .venv
    .venv\Scripts\activate.bat
+   rem (Make sure you see a (.venv) marker now.)
    py -m pip install -r src\requirements.txt --find-links=wheels/ --prefer-binary
    py -m pip install -r src\devreq.txt --find-links=wheels/ --prefer-binary
    ```
@@ -26,7 +27,7 @@ Legacy UmaTL was not made with multilingual tl in mind, so some things might not
 ## Using the tools
 
 ::: tip
-Always activate the venv (run `.venv\Scripts\activate.bat` in cmdline) before using UmaTL's tools.  
+Always activate the venv (run `.venv\Scripts\activate.bat` in cmdline) and verify you see the marker before using UmaTL's tools.
 :::
 
 1. Consult [this doc](https://github.com/noccu/umamusu-translate/blob/master/docs/id-structure.md) or ask/poke around to find the right "targets" that you want to translate.

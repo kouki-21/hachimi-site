@@ -79,6 +79,10 @@ If the game **gets stuck** on the splash screen, see [Error 501](#error-501).
 
 If you can see the splash screen but the game **crashes** afterward, see [The game won't start after installing Hachimi](#the-game-wont-start-after-installing-hachimi).
 
+### Hachimi Edge GUI blocks game interaction
+
+This could happen in some rare mix of circumstances. Try the [panic button](built-in-gui#panic-button).
+
 ### The in-game background is shrunk / White border
 
 Open Hachimi Menu -> Config Editor and reset `virtual resolution multiplier` to 1.
